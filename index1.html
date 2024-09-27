@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arther's To Do List</title>
+        <style>
+            /* Page styling with background design */
+            body {
+                background: linear-gradient(135deg, #e0f7fa 30%, #ffffff 70%); /* Light gradient */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                font-family: 'Arial', sans-serif;
+            }
+
+            /* Wrapper div for the page content */
+            .container {
+                background-color: #ffffff;
+                border: 3px solid #4CAF50;
+                border-radius: 20px;
+                padding: 40px;
+                width: 350px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                position: relative;
+            }
+
+            /* Decorative background elements (optional) */
+            .container::before {
+                content: "";
+                position: absolute;
+                top: -20px;
+                left: -20px;
+                height: 100px;
+                width: 100px;
+                background-color: rgba(76, 175, 80, 0.1); /* Semi-transparent green */
+                border-radius: 50%;
+                z-index: -1;
+            }
+
+            .container::after {
+                content: "";
+                position: absolute;
+                bottom: -20px;
+                right: -20px;
+                height: 100px;
+                width: 100px;
+                background-color: rgba(33, 150, 243, 0.1); /* Semi-transparent blue */
+                border-radius: 50%;
+                z-index: -1;
+            }
+
+            /* Heading styling */
+            h2 {
+                color: #4CAF50;
+                font-size: 28px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                position: relative;
+            }
+
+            h2::after {
+                content: '';
+                display: block;
+                width: 60px;
+                height: 3px;
+                background-color: #4CAF50;
+                margin: 10px auto 0;
+            }
+
+            h3 {
+                color: #2196F3;
+                font-size: 22px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: bold;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            /* Input and button styling */
+            input, button {
+                padding: 12px 20px;
+                margin: 10px;
+                font-size: 16px;
+                border: solid;
+                border-color: #4CAF50;
+                border-radius: 8px;
+            }
+
+            /* Specific styles for the Add Task button */
+            button {
+                background-color: #4CAF50; /* Green */
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            /* To-do task buttons */
+            #todolist button {
+                background-color: #2196F3; /* Blue */
+                color: white;
+                width: 200px; /* Equal size for all buttons */
+                border-radius: 10px;
+                padding: 10px;
+                margin: 5px;
+                font-size: 14px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            #todolist button:hover {
+                background-color: #1976d2; /* Darker blue on hover */
+            }
+
+            /* Styling lists */
+            #todolist, #done {
+                list-style-type: none;
+                padding: 0;
+                margin-top: 20px;
+            }
+
+            /* Completed tasks styling */
+            #done li {
+                background-color: #e0e0e0; /* Light grey background */
+                border-radius: 10px;
+                margin: 5px auto; /* Centered and with spacing */
+                padding: 10px;
+                font-size: 14px;
+                color: #555;
+                width: 200px; /* Same size as task buttons */
+                text-align: center;
+                display: block; /* Ensure they stack one below the other */
+                text-decoration: line-through; /* Strikethrough effect */
+            }
+
+            /* Clear Completed button styling */
+            #clearCompleted {
+                background-color: #f44336; /* Red */
+                color: white;
+                margin-top: 20px;
+                width: 200px;
+            }
+
+            #clearCompleted:hover {
+                background-color: #d32f2f; /* Darker red on hover */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>To Do List</h2>
+
+            <!-- Input for adding tasks -->
+            <input id="addtask" type="text" placeholder="Enter a task">
+            <button id="submit">Add Task</button>
+
+            <!-- To-do list -->
+            <ul id="todolist"></ul>
+
+            <!-- Completed tasks -->
+            <h3>Completed</h3>
+            <ul id="done"></ul>
+            <button id="clearCompleted">Clear Completed</button>
+        </div>
+
+        <script>
+            let submit = document.getElementById("submit");
+            let addtask = document.getElementById("addtask");
+            let todolist = document.getElementById("todolist");
+            let donelist = document.getElementById('done');
+
+            // Load tasks from localStorage when the page loads
+            window.onload = function() {
+                loadTasks();
+            };
+
+            // Save tasks to localStorage
+            function saveTasks() {
+                let tasks = {
+                    todo: list,
+                    completed: completedTasks
+                };
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+            }
+
+            // Load tasks from localStorage
+            function loadTasks() {
+                let storedTasks = localStorage.getItem('tasks');
+                if (storedTasks) {
+                    let tasks = JSON.parse(storedTasks);
+                    list = tasks.todo || [];
+                    completedTasks = tasks.completed || [];
+
+                    // Render the to-do list
+                    list.forEach((task, index) => {
+                        todolist.innerHTML += `<li id="${index}"><button onclick="complete(${index})">${task}</button></li>`;
+                    });
+
+                    // Render the completed list
+                    completedTasks.forEach((task) => {
+                        donelist.innerHTML += `<li>${task}</li>`;
+                    });
+                }
+            }
+
+            // Initialize task arrays
+            let list = [];
+            let completedTasks = [];
+
+            // Event listener for button click to add tasks
+            submit.addEventListener('click', () => {
+                if (addtask.value != '') {
+                    let id = list.length; // Unique ID for each item
+                    list.push(addtask.value); 
+                    todolist.innerHTML += `<li id="${id}"><button onclick="complete(${id})">${addtask.value}</button></li>`;
+                    addtask.value = '';
+
+                    // Save tasks to localStorage
+                    saveTasks();
+                }
+            });
+
+            // Event listener to allow 'Enter' key to trigger the add task button
+            addtask.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    submit.click();
+                }
+            });
+
+            // Function to mark a task as complete
+            function complete(id) {
+                donelist.innerHTML += `<li>${list[id]}</li>`;
+                document.getElementById(id).style.display = "none"; // Hide the completed task
+                completedTasks.push(list[id]);
+
+                // Save tasks to localStorage
+                saveTasks();
+            }
+
+            // Clear completed tasks
+            document.getElementById('clearCompleted').addEventListener('click', () => {
+                donelist.innerHTML = ''; // Clear the completed tasks list
+                completedTasks = []; // Reset completed tasks array
+                saveTasks(); // Update localStorage
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,194 @@
+/* Page styling with background design */
+body {
+    background: linear-gradient(135deg, #e0f7fa 30%, #ffffff 70%); /* Light gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    position: relative; /* Required for absolute positioning of shapes */
+}
+
+/* Wrapper div for the page content */
+.container {
+    background-color: #ffffff;
+    border: 3px solid #4CAF50;
+    border-radius: 20px;
+    padding: 40px;
+    width: 350px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative; /* Stack content above the shapes */
+    z-index: 1; /* Bring content above shapes */
+}
+
+/* Decorative background elements */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1; /* Make shapes semi-transparent */
+    z-index: 0; /* Behind the container */
+}
+
+.circle1 {
+    width: 150px;
+    height: 150px;
+    background-color: #4CAF50; /* Green */
+    top: 5%; /* Positioning at the top */
+    left: 5%; /* Positioning on the left */
+}
+
+.circle2 {
+    width: 200px;
+    height: 200px;
+    background-color: #2196F3; /* Blue */
+    top: 20%; /* Positioning further down */
+    right: 10%; /* Positioning on the right */
+}
+
+.circle3 {
+    width: 100px;
+    height: 100px;
+    background-color: #FFC107; /* Amber */
+    bottom: 20%; /* Positioning towards the bottom */
+    left: 10%; /* Positioning on the left */
+}
+
+.circle4 {
+    width: 120px;
+    height: 120px;
+    background-color: #FF5722; /* Deep Orange */
+    bottom: 15%; /* Positioning near the bottom */
+    right: 15%; /* Positioning on the right */
+}
+
+/* Additional shapes */
+.rectangle1 {
+    width: 300px;
+    height: 60px;
+    background-color: rgba(76, 175, 80, 0.1); /* Light Green */
+    top: 50%;
+    left: 5%;
+    transform: rotate(-10deg); /* Slightly tilted */
+}
+
+.rectangle2 {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(33, 150, 243, 0.1); /* Light Blue */
+    top: 70%;
+    right: 5%;
+}
+
+.triangle1 {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid rgba(255, 193, 7, 0.1); /* Light Amber */
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) rotate(30deg); /* Centered and tilted */
+}
+
+/* Heading styling */
+h2 {
+    color: #4CAF50;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #4CAF50;
+    margin: 10px auto 0;
+}
+
+h3 {
+    color: #2196F3;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Input and button styling */
+input, button {
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Specific styles for the Add Task button */
+button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* To-do task buttons */
+#todolist button {
+    background-color: #2196F3; /* Blue */
+    color: white;
+    width: 200px; /* Equal size for all buttons */
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#todolist button:hover {
+    background-color: #1976d2; /* Darker blue on hover */
+}
+
+/* Styling lists */
+#todolist, #done {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Completed tasks styling */
+#done li {
+    background-color: #e0e0e0; /* Light grey background */
+    border-radius: 10px;
+    margin: 5px auto; /* Centered and with spacing */
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+    width: 200px; /* Same size as task buttons */
+    text-align: center;
+    display: block; /* Ensure they stack one below the other */
+    text-decoration: line-through; /* Strikethrough effect */
+}
+
+/* Clear Completed button styling */
+#clearCompleted {
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-top: 20px;
+    width: 200px;
+}
+
+#clearCompleted:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
