@@ -1,16 +1,14 @@
-/* Page styling with background design */
 body {
-    background: linear-gradient(135deg, #e0f7fa 30%, #ffffff 70%); /* Light gradient */
+    background: linear-gradient(135deg, #e0f7fa 30%, #ffffff 70%);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     font-family: 'Arial', sans-serif;
-    position: relative; /* Required for absolute positioning of shapes */
+    position: relative;
 }
 
-/* Wrapper div for the page content */
 .container {
     background-color: #ffffff;
     border: 3px solid #4CAF50;
@@ -19,80 +17,49 @@ body {
     width: 350px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     text-align: center;
-    position: relative; /* Stack content above the shapes */
-    z-index: 1; /* Bring content above shapes */
+    position: relative;
+    z-index: 1;
 }
 
-/* Decorative background elements */
 .shape {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.1; /* Make shapes semi-transparent */
-    z-index: 0; /* Behind the container */
+    opacity: 0.1;
+    z-index: 0;
 }
 
 .circle1 {
     width: 150px;
     height: 150px;
-    background-color: #4CAF50; /* Green */
-    top: 5%; /* Positioning at the top */
-    left: 5%; /* Positioning on the left */
+    background-color: #4CAF50;
+    top: 5%;
+    left: 5%;
 }
 
 .circle2 {
     width: 200px;
     height: 200px;
-    background-color: #2196F3; /* Blue */
-    top: 20%; /* Positioning further down */
-    right: 10%; /* Positioning on the right */
+    background-color: #2196F3;
+    top: 20%;
+    right: 0.01%;
 }
 
 .circle3 {
     width: 100px;
     height: 100px;
-    background-color: #FFC107; /* Amber */
-    bottom: 20%; /* Positioning towards the bottom */
-    left: 10%; /* Positioning on the left */
+    background-color: #FFC107;
+    bottom: 20%;
+    left: 0.01%;
 }
 
 .circle4 {
     width: 120px;
     height: 120px;
-    background-color: #FF5722; /* Deep Orange */
-    bottom: 15%; /* Positioning near the bottom */
-    right: 15%; /* Positioning on the right */
+    background-color: #FF5722;
+    bottom: 15%;
+    right: 1%;
 }
 
-/* Additional shapes */
-.rectangle1 {
-    width: 300px;
-    height: 60px;
-    background-color: rgba(76, 175, 80, 0.1); /* Light Green */
-    top: 50%;
-    left: 5%;
-    transform: rotate(-10deg); /* Slightly tilted */
-}
-
-.rectangle2 {
-    width: 100px;
-    height: 100px;
-    background-color: rgba(33, 150, 243, 0.1); /* Light Blue */
-    top: 70%;
-    right: 5%;
-}
-
-.triangle1 {
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid rgba(255, 193, 7, 0.1); /* Light Amber */
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%) rotate(30deg); /* Centered and tilted */
-}
-
-/* Heading styling */
 h2 {
     color: #4CAF50;
     font-size: 28px;
@@ -122,8 +89,7 @@ h3 {
     margin-bottom: 20px;
 }
 
-/* Input and button styling */
-input{
+input {
     padding: 12px 20px;
     margin: 10px;
     font-size: 16px;
@@ -131,17 +97,14 @@ input{
     border-color: #2196F3;
     border-radius: 8px;
 }
+
 button {
     padding: 12px 20px;
     margin: 10px;
     font-size: 16px;
     border: none;
     border-radius: 8px;
-}
-
-/* Specific styles for the Add Task button */
-button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -151,11 +114,10 @@ button:hover {
     background-color: #45a049;
 }
 
-/* To-do task buttons */
 #todolist button {
-    background-color: #2196F3; /* Blue */
+    background-color: #2196F3;
     color: white;
-    width: 200px; /* Equal size for all buttons */
+    width: 200px;
     border-radius: 10px;
     padding: 10px;
     margin: 5px;
@@ -165,38 +127,35 @@ button:hover {
 }
 
 #todolist button:hover {
-    background-color: #1976d2; /* Darker blue on hover */
+    background-color: #1976d2;
 }
 
-/* Styling lists */
 #todolist, #done {
     list-style-type: none;
     padding: 0;
     margin-top: 20px;
 }
 
-/* Completed tasks styling */
 #done li {
-    background-color: #e0e0e0; /* Light grey background */
+    background-color: #e0e0e0;
     border-radius: 10px;
-    margin: 5px auto; /* Centered and with spacing */
+    margin: 5px auto;
     padding: 10px;
     font-size: 14px;
     color: #555;
-    width: 200px; /* Same size as task buttons */
+    width: 200px;
     text-align: center;
-    display: block; /* Ensure they stack one below the other */
-    text-decoration: line-through; /* Strikethrough effect */
+    display: block;
+    text-decoration: line-through;
 }
 
-/* Clear Completed button styling */
 #clearCompleted {
-    background-color: #f44336; /* Red */
+    background-color: #f44336;
     color: white;
     margin-top: 20px;
     width: 200px;
 }
 
 #clearCompleted:hover {
-    background-color: #d32f2f; /* Darker red on hover */
+    background-color: #d32f2f;
 }
