@@ -123,7 +123,15 @@ h3 {
 }
 
 /* Input and button styling */
-input, button {
+input{
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: solid;
+    border-color: #2196F3;
+    border-radius: 8px;
+}
+button {
     padding: 12px 20px;
     margin: 10px;
     font-size: 16px;
